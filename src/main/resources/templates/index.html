@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>To-Do List</title>
+</head>
+<body>
+<h1>To-Do List</h1>
+<ul>
+    <li th:each="task : ${tasks}">
+        <span th:text="${task.description}"></span>
+        <a th:href="@{/delete/{id}(id=${task.id})}">Delete </a>
+        <a th:href="@{/edit/{id}(id=${task.id})}">Edit </a>
+    </li>
+</ul>
+<a href="/add">Add Task</a>
+</body>
+</html>

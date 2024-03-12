@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Task</title>
+</head>
+<body>
+<h1>Edit Task</h1>
+<form th:action="@{/edit}" method="post" th:object="${task}">
+    <input type="hidden" th:field="*{id}" />
+    <input type="text" th:field="*{description}" placeholder="Task Description"/>
+    <button type="submit">Update</button>
+</form>
+</body>
+</html>
