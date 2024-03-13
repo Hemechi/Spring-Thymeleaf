@@ -3,15 +3,40 @@
 <head>
     <title>To-Do List</title>
 </head>
+<style>
+    a{
+        text-decoration: none;
+    }
+</style>
 <body>
-<h1>To-Do List</h1>
-<ul>
-    <li th:each="task : ${tasks}">
-        <span th:text="${task.description}"></span>
-        <a th:href="@{/delete/{id}(id=${task.id})}">Delete </a>
-        <a th:href="@{/edit/{id}(id=${task.id})}">Edit </a>
-    </li>
-</ul>
-<a href="/add">Add Task</a>
+<h1 style="text-align: center">To Do List</h1>
+<div style="margin: auto; text-align: center; padding: 10px; width: 100px; margin-bottom: 20px; background-color: coral;">
+    <a style="color: white" href="/add">Add Task</a>
+</div>
+<table border="1" style="margin: auto; width: 800px; height: 400px; text-align: center;
+ border-collapse: collapse;">
+    <thead >
+    <tr style="background-color: skyblue; color: white; font-size: 20px;">
+        <th>ID</th>
+        <th>Description</th>
+        <th colspan="3">Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="task : ${tasks}">
+        <td style="background-color: pink" th:text="${task.id}"></td>
+        <td th:text="${task.description}"></td>
+<!--        <td>-->
+<!--            <a th:href="@{/add(id=${task.id})}" style="color:darkblue;">Add</a>-->
+<!--        </td>-->
+        <td>
+            <a th:href="@{/edit/{id}(id=${task.id})}" style="color:darkcyan;">Edit</a>
+        </td>
+        <td>
+            <a th:href="@{/delete/{id}(id=${task.id})}" style="color: red;">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
 </body>
 </html>

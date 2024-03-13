@@ -14,6 +14,15 @@ public class TaskController {
 
     private List<Task> tasks = new ArrayList<>();
 
+    public TaskController() {
+        // Initialize some static data
+        tasks.add(new Task(1, "Bamboo"));
+        tasks.add(new Task(2, "Chicken"));
+        tasks.add(new Task(3, "Bok Choy"));
+        tasks.add(new Task(4, "Adios"));
+        tasks.add(new Task(5, "Deja Vu"));
+    }
+
     @GetMapping("/")
     public String index(Model model) {
         model.addAttribute("tasks", tasks);
@@ -33,7 +42,7 @@ public class TaskController {
     }
 
     @GetMapping("/edit/{id}")
-    public String editTaskForm(@PathVariable Long id, Model model) {
+    public String editTaskForm(@PathVariable Integer id, Model model) {
         Task task = tasks.stream()
                 .filter(t -> t.getId().equals(id))
                 .findFirst()
@@ -48,7 +57,7 @@ public class TaskController {
 
     @PostMapping("/edit")
     public String editTask(@ModelAttribute Task updatedTask) {
-        Long id = updatedTask.getId(); // Retrieve the ID from the updatedTask object
+        Integer id = updatedTask.getId(); // Retrieve the ID from the updatedTask object
         Task task = tasks.stream()
                 .filter(t -> t.getId().equals(id))
                 .findFirst()
@@ -61,10 +70,8 @@ public class TaskController {
         return "redirect:/";
     }
 
-
-
     @GetMapping("/delete/{id}")
-    public String deleteTask(@PathVariable Long id) {
+    public String deleteTask(@PathVariable Integer id) {
         Optional<Task> taskToRemove = tasks.stream().filter(task -> task.getId().equals(id)).findFirst();
         if (taskToRemove.isPresent()) {
             tasks.remove(taskToRemove.get());

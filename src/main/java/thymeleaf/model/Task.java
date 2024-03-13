@@ -8,7 +8,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Task {
-    private Long id;
+    private Integer id;
     private String description;
     // getters and setters
 }

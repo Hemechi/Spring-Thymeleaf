@@ -4,11 +4,13 @@
     <title>Add Task</title>
 </head>
 <body>
-<h1>Add Task</h1>
-<form th:action="@{/add}" method="post" th:object="${task}">
-    <input type="number" th:field="*{id}" placeholder="ID"/>
-    <input type="text" th:field="*{description}" placeholder="Task Description"/>
-    <button type="submit">Add</button>
-</form>
+<div style="margin: auto; margin-top: 20px; padding: 20px; width: 400px;background-color: whitesmoke">
+    <h1 style="text-align: center">Add Task</h1>
+    <form style="display: flex; justify-content: center; gap:10px" th:action="@{/add}" method="post" th:object="${task}">
+        <input type="number" th:field="*{id}" placeholder="ID"/>
+        <input type="text" th:field="*{description}" placeholder="Task Description"/>
+        <button type="submit">Add</button>
+    </form>
+</div>
 </body>
 </html>
